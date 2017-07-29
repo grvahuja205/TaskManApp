@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TaskMan App</title>
+</head>
+<body>
+{% include 'includes/_messages.html' %}
+<h2>Welcome To Login Page</h2>
+{% from 'includes/_formhelpers.html' import render_field %}
+	<form action="{{ url_for('login') }}" method="post">
+		{{ form.csrf_token }}
+		{{ render_field(form.email) }}<br>
+		{{ render_field(form.password_login) }}<br>
+	<input type="submit" name="Login" value="Login">
+</form>
+</body>
+</html>

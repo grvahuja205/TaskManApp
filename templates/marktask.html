@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TaskMan App</title>
+</head>
+<body>
+	<h2>For Marking the task {{ task.name }}</h2>
+	<a href="{{ url_for('logout') }}">Logout</a>
+	<form action="{{ url_for('markTask', task_id = task.id) }}" method="post">
+		{% if task.complete %}
+			<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+			<input type="Submit" value="Mark As Incomplete">
+		{% else %}
+			<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+			<input type="Submit" value="Mark As Complete">
+		{% endif %}
+	</form>
+</body>
+</html>

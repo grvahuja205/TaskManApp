@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TaskMan App</title>
+</head>
+<body>
+	<h2>For Deleting task {{ task.name }}</h2>
+	<a href="{{ url_for('logout') }}">Logout</a>
+	<form action="{{ url_for('deleteTask', task_id = task.id) }}" method="POST">
+		<input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+		<input type="Submit" value="Delete This Task">
+	</form>
+</body>
+</html>

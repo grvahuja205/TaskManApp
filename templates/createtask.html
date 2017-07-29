@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TaskMan App</title>
+</head>
+<body>
+	{% include 'includes/_messages.html' %}
+	<h2>For Creating New Task</h2>
+	<a href="{{ url_for('logout') }}">Logout</a>
+	{% from 'includes/_formhelpers.html' import render_field %}
+	<form action="{{ url_for('createTask', user_id = current_user.id) }}" method="post">
+		{{ form.csrf_token }}
+		{{ render_field(form.task_name) }}<br>
+		{{ render_field(form.task_date) }}<br>
+	<input type="submit" name="Create" value="Create Task">
+</form>
+</body>
+</html>
