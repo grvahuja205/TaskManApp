@@ -29,7 +29,6 @@ class Task(Base):
 			'id': self.id,
 			'name': self.name,
 			'deadline': self.deadline,
-			'user': self.user_id,
 		}
 
 engine = create_engine('sqlite:///taskman.db')
