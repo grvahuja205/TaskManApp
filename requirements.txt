@@ -1,0 +1,10 @@
+Python>=2.7.12,<3.0
+Flask==0.12.2
+sqlalchemy>=1.1.10
+passlib.hash
+flask_login
+json
+flask_wtf
+wtforms
+wtforms_components
+
