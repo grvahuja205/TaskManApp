@@ -164,6 +164,7 @@ def deleteTask(task_id, methods = ['GET', 'POST']):
 		return render_template('deletetask.html', task = task)
 
 @app.route('/tasks', methods = ['GET', 'POST'])
+@csrf.exempt
 def taskJSON():
 	tasks = session.query(Task).all()
 	if request.method == 'POST':
@@ -186,14 +187,16 @@ def taskJSON():
 		return jsonify(Tasks=[i.serialize for i in tasks])
 
 @app.route('/tasks/<int:task_id>', methods= ['DELETE'])
+@csrf.exempt
 def taskDeleteJSON(task_id):
 	task_c = session.query(Task).filter_by(id = task_id).count()
 	if task_c > 0:
 		task = session.query(Task).filter_by(id = task_id).one()
-		if request.method == 'DELETE' and task.user_id == None:
+		if request.method == 'DELETE' and (task.user_id == None or task.user_id == current_user.id):
 			session.delete(task)
 			session.commit()
 			response = make_response(json.dumps('Task Deleted'), 200)
+			return response
 		else:
 			response = make_response(json.dumps('Wrong Method Used or Trying To Delete Protected Task'), 401)
 			response.headers['Content-Type'] = 'application/json'
