@@ -29,4 +29,4 @@ by sending POST request methid and delete a task using DELETE request method.
     python server.py
     ```
 * Your app should now be running on ***http://localhost:7000*** or ***http://localhost:7000/index***
-* The API layer is at ***http://localhost:7000/tasks*** and For deletion at ***http://localhost:7000/task/<task id>***
+* The API layer is at ***http://localhost:7000/tasks*** and For deletion at ***http://localhost:7000/task/task id/***
