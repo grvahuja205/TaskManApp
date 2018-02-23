@@ -153,7 +153,7 @@ def deleteTask(task_id, methods = ['GET', 'POST']):
 	if task.user_id != current_user.id:
 		flash("Wrong User")
 		return redirect(url_for('login'))
-	if user_id != current_user.id:
+	if task.user_id != current_user.id:
 		flash("Wrong User")
 		return redirect(url_for('login'))
 	if request.method == 'POST':
