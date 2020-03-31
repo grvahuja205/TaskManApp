@@ -1,5 +1,5 @@
 Python>=2.7.12,<3.0
-Flask==0.12.2
+Flask==1.0
 sqlalchemy>=1.1.10
 passlib
 flask_login
